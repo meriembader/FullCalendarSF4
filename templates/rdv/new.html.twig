@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Rendez-vous{% endblock %}
+
+{% block body %}
+    <style>
+        .form-control{
+            margin-top: 1.5%;
+        }
+    </style>
+    <h1>Create new Rendez-vous</h1>
+    <div class="  form-group">
+        {{ include('rdv/_form.html.twig') }}
+    </div>
+
+    <a href="{{ path('rdv_index') }}">back to list</a>
+{% endblock %}

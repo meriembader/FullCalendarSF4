@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Ordonnance{% endblock %}
+
+{% block body %}
+    <h1>Edit Ordonnance</h1>
+{{ id_con }}
+    {{ include('Ordonnance/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('ordonnancebycon_index', {'id_con': id_con})}}">back to list</a>
+    {{ include('Ordonnance/_delete_form.html.twig') }}
+{% endblock %}

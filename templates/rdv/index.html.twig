@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rondez-vous index{% endblock %}
+
+{% block body %}
+    <h1>Rondez-vous index</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Patient</th>
+            <th>Docteur</th>
+            <th>Date</th>
+            <th>Motif</th>
+            <th>Confirmation</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for rdv in rdvs %}
+            <tr>
+                <td>{{ rdv.id }}</td>
+                <td>{{ rdv.refPatient.id }}</td>
+                <td>{{ rdv.refDoc.id }}</td>
+                <td>{{ rdv.Date ? rdv.Date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ rdv.Motif }}</td>
+                <td>{{ rdv.Confirmation }}</td>
+                <td>
+                    <a href="{{ path('rdv_show', {'id': rdv.id}) }}">show</a>
+                    <a href="{{ path('rdv_edit', {'id': rdv.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('rdv_new') }}">Create new</a>
+    <!--       <a href="{{ path('rdv_new',{'id_doc': 1 , 'id_pat': 0} ) }}">Create new</a>
+-->
+{% endblock %}
